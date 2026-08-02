@@ -2,12 +2,12 @@
    CELEBRATI — MAIN APPLICATION ENTRY POINT & VIEW ROUTER
    ========================================================================== */
 
-import { db } from './storage.js';
-import { renderAdminView }    from './components/admin.js';
-import { renderDashboardView } from './components/dashboard.js';
-import { renderInviteView }   from './components/invite.js';
-import { renderTrackerView }  from './components/tracker.js';
-import { showLoginGate }      from './components/auth.js';
+import { db } from './storage.js?v=2.0';
+import { renderAdminView }    from './components/admin.js?v=2.0';
+import { renderDashboardView } from './components/dashboard.js?v=2.0';
+import { renderInviteView }   from './components/invite.js?v=2.0';
+import { renderTrackerView }  from './components/tracker.js?v=2.0';
+import { showLoginGate }      from './components/auth.js?v=2.0';
 
 class CelebratiApp {
   constructor() {
