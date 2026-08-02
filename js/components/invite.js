@@ -41,7 +41,7 @@ export function renderInviteView(container) {
   
   if (activeEvent.customFont) {
     const fontName = activeEvent.customFont.split(',')[0].replace(/['"]/g, '').trim();
-    googleFontLink = `<link href="https://fonts.googleapis.com/css2?family=${fontName.replace(/ /g, '+')}:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">`;
+    googleFontLink = `<link href="https://fonts.googleapis.com/css2?family=${fontName.replace(/ /g, '+')}&display=swap" rel="stylesheet">`;
     customStyles += `--theme-font-title: ${activeEvent.customFont} !important;
 `;
     customStyles += `--theme-font-script: ${activeEvent.customFont} !important;
@@ -56,6 +56,15 @@ export function renderInviteView(container) {
   container.innerHTML = `
     ${googleFontLink}
     ${customStyleTag}
+
+    <!-- Floating Admin Return Control -->
+    ${db.isAdminLoggedIn() ? `
+      <div style="position:fixed; top:1rem; left:1rem; z-index:99999;">
+        <a href="app.html#admin" style="background:rgba(10,15,26,0.85); color:#FFF; border:1px solid rgba(255,255,255,0.2); backdrop-filter:blur(10px); padding:0.45rem 1rem; border-radius:30px; font-size:0.8rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 4px 20px rgba(0,0,0,0.5);">
+          ⚙️ Return to Admin Studio
+        </a>
+      </div>
+    ` : ''}
 
     <!-- Premium Cinematic Envelope Opener — populated by JS engine -->
     <div id="envelope-opener-overlay"></div>
