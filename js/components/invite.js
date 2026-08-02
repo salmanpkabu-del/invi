@@ -95,6 +95,13 @@ export function renderInviteView(container) {
               ✨ Personal Invitation Prepared Especially For <strong>${decodeURIComponent(personalizedGuest)}</strong>
             </div>
           ` : ''}
+          ${activeEvent.couplePhoto ? `
+            <div style="margin-bottom: 1.25rem; display: flex; justify-content: center;">
+              <div style="width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--theme-accent); padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                <img src="${activeEvent.couplePhoto}" alt="Couple Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              </div>
+            </div>
+          ` : ''}
           <div class="inv-tagline script-font">${activeEvent.tagline || 'You Are Cordially Invited'}</div>
           <h1 class="inv-main-names">${activeEvent.title}</h1>
           <div class="inv-subtitle">Hosted By ${activeEvent.hostNames}</div>
