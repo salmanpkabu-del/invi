@@ -290,28 +290,57 @@ export function renderAdminView(container, onNavigateToDashboard, onNavigateToIn
               </div>
             </div>
 
-                        <!-- ════ STEP 5: Sections ════ -->
+                        <!-- ════ STEP 5: Sections & Layout Arrangement ════ -->
             <div class="wizard-step-content hidden" id="step-5-content">
-              <h3 style="margin-bottom:1.25rem; font-family:var(--font-display);">Manage Sections</h3>
-              <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:1.5rem;">Toggle which sections will be visible on the invitation.</p>
-              
-              <div style="display:flex; flex-direction:column; gap:1rem;">
-                <label style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
-                  <input type="checkbox" id="field-sec-story" ${activeEvent.visibleSections?.story !== false ? 'checked' : ''} style="width:20px;height:20px;">
-                  <span style="font-size:1.1rem;">📖 Our Story (Milestones)</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
-                  <input type="checkbox" id="field-sec-schedule" ${activeEvent.visibleSections?.schedule !== false ? 'checked' : ''} style="width:20px;height:20px;">
-                  <span style="font-size:1.1rem;">📅 Event Schedule & Venues</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
-                  <input type="checkbox" id="field-sec-dressCode" ${activeEvent.visibleSections?.dressCode !== false ? 'checked' : ''} style="width:20px;height:20px;">
-                  <span style="font-size:1.1rem;">👗 Dress Code</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
-                  <input type="checkbox" id="field-sec-wishes" ${activeEvent.visibleSections?.wishes !== false ? 'checked' : ''} style="width:20px;height:20px;">
-                  <span style="font-size:1.1rem;">💬 Wishes Wall</span>
-                </label>
+              <h3 style="margin-bottom:0.4rem; font-family:var(--font-display);">Sections & Page Arrangement</h3>
+              <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:1.5rem;">Toggle section visibility and reorder the layout arrangement of the invitation.</p>
+
+              <!-- Section Visibility Toggles -->
+              <div class="glass-panel" style="padding:1.25rem; margin-bottom:1.5rem;">
+                <label class="form-label" style="margin-bottom:0.8rem;">👁️ Visibility Toggles</label>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                  <label style="display:flex; align-items:center; gap:0.75rem; cursor:pointer; background:rgba(0,0,0,0.3); padding:0.75rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
+                    <input type="checkbox" id="field-sec-story" ${activeEvent.visibleSections?.story !== false ? 'checked' : ''} style="width:18px;height:18px;">
+                    <span style="font-size:0.92rem; font-weight:600;">📖 Our Story</span>
+                  </label>
+                  <label style="display:flex; align-items:center; gap:0.75rem; cursor:pointer; background:rgba(0,0,0,0.3); padding:0.75rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
+                    <input type="checkbox" id="field-sec-schedule" ${activeEvent.visibleSections?.schedule !== false ? 'checked' : ''} style="width:18px;height:18px;">
+                    <span style="font-size:0.92rem; font-weight:600;">📅 Schedule & Venues</span>
+                  </label>
+                  <label style="display:flex; align-items:center; gap:0.75rem; cursor:pointer; background:rgba(0,0,0,0.3); padding:0.75rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
+                    <input type="checkbox" id="field-sec-dressCode" ${activeEvent.visibleSections?.dressCode !== false ? 'checked' : ''} style="width:18px;height:18px;">
+                    <span style="font-size:0.92rem; font-weight:600;">👗 Dress Code</span>
+                  </label>
+                  <label style="display:flex; align-items:center; gap:0.75rem; cursor:pointer; background:rgba(0,0,0,0.3); padding:0.75rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
+                    <input type="checkbox" id="field-sec-wishes" ${activeEvent.visibleSections?.wishes !== false ? 'checked' : ''} style="width:18px;height:18px;">
+                    <span style="font-size:0.92rem; font-weight:600;">💬 Wishes Wall</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Section Reordering Controls -->
+              <div class="glass-panel" style="padding:1.25rem;">
+                <label class="form-label" style="margin-bottom:0.8rem;">🔃 Reorder Page Layout Arrangement</label>
+                <div id="section-order-list" style="display:flex; flex-direction:column; gap:0.5rem;">
+                  ${(() => {
+                    const order = activeEvent.sectionOrder || ['story', 'schedule', 'dresscode', 'wishes'];
+                    const labels = {
+                      story: '📖 Our Story (Milestones)',
+                      schedule: '📅 Schedule & Venues',
+                      dresscode: '👗 Dress Code & Attire',
+                      wishes: '💬 Guest Wishes Wall'
+                    };
+                    return order.map((key, idx) => `
+                      <div class="order-item-card" data-key="${key}" style="display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.08); padding:0.6rem 1rem; border-radius:10px;">
+                        <span style="font-size:0.9rem; font-weight:600;">${idx + 1}. ${labels[key] || key}</span>
+                        <div style="display:flex; gap:0.3rem;">
+                          <button type="button" class="btn btn-sm btn-outline btn-move-up" data-idx="${idx}" ${idx === 0 ? 'disabled' : ''}>⬆️ Up</button>
+                          <button type="button" class="btn btn-sm btn-outline btn-move-down" data-idx="${idx}" ${idx === order.length - 1 ? 'disabled' : ''}>⬇️ Down</button>
+                        </div>
+                      </div>
+                    `).join('');
+                  })()}
+                </div>
               </div>
             </div>
 
@@ -540,6 +569,7 @@ export function renderAdminView(container, onNavigateToDashboard, onNavigateToIn
   // ── Internal state ──────────────────────────────────────────────────────
   let currentStep    = 1;
   let selectedTheme  = activeEvent.theme || 'theme-royal';
+  let currentSectionOrder = [...(activeEvent.sectionOrder || ['story', 'schedule', 'dresscode', 'wishes'])];
 
   setupAdminListeners();
 
@@ -591,6 +621,70 @@ export function renderAdminView(container, onNavigateToDashboard, onNavigateToIn
         galleryModal.style.display = 'none';
       });
     }
+
+    // Reorder Sections Up / Down buttons
+    function bindReorderButtons() {
+      const containerList = container.querySelector('#section-order-list');
+      if (!containerList) return;
+      
+      const labels = {
+        story: '📖 Our Story (Milestones)',
+        schedule: '📅 Schedule & Venues',
+        dresscode: '👗 Dress Code & Attire',
+        wishes: '💬 Guest Wishes Wall'
+      };
+
+      containerList.querySelectorAll('.btn-move-up').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(e.currentTarget.dataset.idx);
+          if (idx > 0) {
+            const temp = currentSectionOrder[idx];
+            currentSectionOrder[idx] = currentSectionOrder[idx - 1];
+            currentSectionOrder[idx - 1] = temp;
+            renderReorderList();
+            saveFormData();
+            refreshPreview();
+          }
+        });
+      });
+
+      containerList.querySelectorAll('.btn-move-down').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(e.currentTarget.dataset.idx);
+          if (idx < currentSectionOrder.length - 1) {
+            const temp = currentSectionOrder[idx];
+            currentSectionOrder[idx] = currentSectionOrder[idx + 1];
+            currentSectionOrder[idx + 1] = temp;
+            renderReorderList();
+            saveFormData();
+            refreshPreview();
+          }
+        });
+      });
+    }
+
+    function renderReorderList() {
+      const containerList = container.querySelector('#section-order-list');
+      if (!containerList) return;
+      const labels = {
+        story: '📖 Our Story (Milestones)',
+        schedule: '📅 Schedule & Venues',
+        dresscode: '👗 Dress Code & Attire',
+        wishes: '💬 Guest Wishes Wall'
+      };
+      containerList.innerHTML = currentSectionOrder.map((key, idx) => `
+        <div class="order-item-card" data-key="${key}" style="display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.08); padding:0.6rem 1rem; border-radius:10px;">
+          <span style="font-size:0.9rem; font-weight:600;">${idx + 1}. ${labels[key] || key}</span>
+          <div style="display:flex; gap:0.3rem;">
+            <button type="button" class="btn btn-sm btn-outline btn-move-up" data-idx="${idx}" ${idx === 0 ? 'disabled' : ''}>⬆️ Up</button>
+            <button type="button" class="btn btn-sm btn-outline btn-move-down" data-idx="${idx}" ${idx === currentSectionOrder.length - 1 ? 'disabled' : ''}>⬇️ Down</button>
+          </div>
+        </div>
+      `).join('');
+      bindReorderButtons();
+    }
+
+    bindReorderButtons();
 
     // Preview Template Button Logic
     container.querySelectorAll('.btn-preview-template').forEach(btn => {
@@ -942,6 +1036,7 @@ Thank you for choosing Celebrati!`);
       audioUrl:     container.querySelector('#field-audioUrl')?.value     ?? activeEvent.audioUrl,
       musicTitle:   container.querySelector('#field-musicTitle')?.value   ?? activeEvent.musicTitle,
       hashtag:      container.querySelector('#field-hashtag')?.value      ?? activeEvent.hashtag,
+      sectionOrder: currentSectionOrder || (activeEvent.sectionOrder || ['story', 'schedule', 'dresscode', 'wishes']),
       visibleSections: {
         story:      container.querySelector('#field-sec-story')?.checked ?? true,
         schedule:   container.querySelector('#field-sec-schedule')?.checked ?? true,
@@ -975,29 +1070,109 @@ Thank you for choosing Celebrati!`);
     let modal = document.getElementById('celebrati-preview-overlay');
     if (modal) modal.remove();
 
+    const theme = THEMES[themeId] || THEMES['theme-royal'];
+
+    // Temporarily apply theme to active event for live preview
+    activeEvent.theme = themeId;
+    db.saveEvent(activeEvent);
+
     modal = document.createElement('div');
     modal.id = 'celebrati-preview-overlay';
     modal.style.cssText = `
-      position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
-      z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: fixed; inset: 0; background: rgba(0, 10, 25, 0.92); backdrop-filter: blur(16px);
+      z-index: 999999; display: flex; items-center: center; justify-content: center;
       padding: 1.5rem;
     `;
 
-    const theme = THEMES[themeId] || THEMES['theme-royal'];
     modal.innerHTML = `
-      <div style="width:100%; max-width:420px; background:#000; border-radius:36px; padding:12px; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.8);">
-        <div style="display:flex; justify-content:space-between; align-items:center; padding:0.5rem 1rem; color:#FFF; font-weight:700; font-size:0.9rem;">
-          <span>Preview: ${theme.name}</span>
-          <button id="close-preview-overlay" style="background:none; border:none; color:#FFF; font-size:1.2rem; cursor:pointer;">✕</button>
+      <div style="width:100%; max-width:960px; background:linear-gradient(145deg, #0F172A 0%, #1E293B 100%); border:1px solid rgba(255,255,255,0.12); border-radius:24px; padding:1.75rem; box-shadow:0 30px 80px rgba(0,0,0,0.8); display:grid; grid-template-columns:320px 1fr; gap:1.5rem; max-height:90vh; overflow:hidden;">
+        <!-- Controls Left Panel -->
+        <div style="display:flex; flex-direction:column; justify-content:space-between; border-right:1px solid rgba(255,255,255,0.08); padding-right:1.25rem; overflow-y:auto;">
+          <div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+              <h3 style="font-size:1.1rem; font-weight:800; color:#FFF; font-family:var(--font-display);">🎨 Live Template Customizer</h3>
+            </div>
+            
+            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.06); padding:0.85rem; border-radius:12px; margin-bottom:1.25rem;">
+              <div style="font-size:0.75rem; color:#A78BFA; font-weight:700; text-transform:uppercase; letter-spacing:1px;">Active Template</div>
+              <div style="font-size:1rem; font-weight:700; color:#FFF; margin-top:0.2rem;">${theme.name}</div>
+            </div>
+
+            <!-- Color Swatch Picker -->
+            <div class="form-group" style="margin-bottom:1.25rem;">
+              <label class="form-label" style="font-size:0.75rem;">🎨 Accent Color</label>
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <input type="color" id="modal-customColor" class="form-input" value="${activeEvent.customColor || theme.primaryColor}" style="height:40px; width:55px; padding:0.2rem; cursor:pointer;">
+                <span style="font-size:0.8rem; color:#94A3B8;">Custom Hex</span>
+              </div>
+            </div>
+
+            <!-- Typography Picker -->
+            <div class="form-group" style="margin-bottom:1.25rem;">
+              <label class="form-label" style="font-size:0.75rem;">✍️ Typography</label>
+              <select id="modal-customFont" class="form-select" style="font-size:0.85rem;">
+                <option value="">Default Theme Font</option>
+                <option value="'Playfair Display', serif" ${activeEvent.customFont === "'Playfair Display', serif" ? 'selected' : ''}>Playfair Display</option>
+                <option value="'Cinzel', serif" ${activeEvent.customFont === "'Cinzel', serif" ? 'selected' : ''}>Cinzel</option>
+                <option value="'Great Vibes', cursive" ${activeEvent.customFont === "'Great Vibes', cursive" ? 'selected' : ''}>Great Vibes</option>
+                <option value="'Lora', serif" ${activeEvent.customFont === "'Lora', serif" ? 'selected' : ''}>Lora</option>
+                <option value="'Cormorant Garamond', serif" ${activeEvent.customFont === "'Cormorant Garamond', serif" ? 'selected' : ''}>Cormorant Garamond</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:1rem;">
+            <button type="button" id="modal-apply-customization" class="btn btn-primary" style="width:100%; justify-content:center;">
+              ✨ Use This Customization
+            </button>
+            <button type="button" id="close-preview-overlay" class="btn btn-outline" style="width:100%; justify-content:center;">
+              Close Preview
+            </button>
+          </div>
         </div>
-        <div style="height:620px; border-radius:26px; overflow:hidden; position:relative;">
-          <iframe id="preview-template-iframe" src="${window.location.origin}/app.html#invite-${activeEvent.id}" style="width:100%; height:100%; border:none;"></iframe>
+
+        <!-- Phone Mockup Live View Right Panel -->
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative;">
+          <button id="close-preview-overlay-x" style="position:absolute; top:0; right:0; background:rgba(255,255,255,0.08); border:none; color:#FFF; width:32px; height:32px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:700;">✕</button>
+          <div style="width:330px; height:600px; background:#000; border-radius:36px; padding:10px; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.8);">
+            <div style="width:110px; height:20px; background:#000; position:absolute; top:10px; left:50%; transform:translateX(-50%); border-bottom-left-radius:12px; border-bottom-right-radius:12px; z-index:100;"></div>
+            <iframe id="preview-template-iframe-modal" src="${window.location.origin}/app.html#invite-${activeEvent.id}" style="width:100%; height:100%; border:none; border-radius:26px;"></iframe>
+          </div>
         </div>
       </div>
     `;
 
     document.body.appendChild(modal);
+
+    const colorInput = document.getElementById('modal-customColor');
+    const fontInput = document.getElementById('modal-customFont');
+    const iframe = document.getElementById('preview-template-iframe-modal');
+
+    function updateLivePreview() {
+      if (colorInput) activeEvent.customColor = colorInput.value;
+      if (fontInput) activeEvent.customFont = fontInput.value;
+      db.saveEvent(activeEvent);
+      if (iframe) {
+        iframe.src = '';
+        setTimeout(() => { iframe.src = `${window.location.origin}/app.html#invite-${activeEvent.id}`; }, 50);
+      }
+    }
+
+    if (colorInput) colorInput.addEventListener('change', updateLivePreview);
+    if (fontInput) fontInput.addEventListener('change', updateLivePreview);
+
+    document.getElementById('modal-apply-customization').addEventListener('click', () => {
+      selectedTheme = themeId;
+      if (colorInput) container.querySelector('#field-customColor').value = colorInput.value;
+      if (fontInput) container.querySelector('#field-customFont').value = fontInput.value;
+      saveFormData();
+      modal.remove();
+      renderAdminView(container, onNavigateToDashboard, onNavigateToInvite);
+      showToast('✓ Customization applied!');
+    });
+
     document.getElementById('close-preview-overlay').addEventListener('click', () => modal.remove());
+    document.getElementById('close-preview-overlay-x').addEventListener('click', () => modal.remove());
   }
 
   function showToast(msg, type = 'success', duration = 2500) {
