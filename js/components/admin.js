@@ -232,6 +232,8 @@ export function renderAdminView(container, onNavigateToDashboard, onNavigateToIn
                   <label class="form-label">✍️ Custom Typography</label>
                   <select class="form-select" id="field-customFont">
                     <option value="">Default Theme Font</option>
+                    <option value="'Italiana', serif" ${activeEvent.customFont === "'Italiana', serif" ? 'selected' : ''}>🇮🇹 Italiana (High-Fashion Didone Serif)</option>
+                    <option value="'Montserrat', sans-serif" ${activeEvent.customFont === "'Montserrat', sans-serif" ? 'selected' : ''}>✨ Montserrat (Modern Geometric Pair)</option>
                     <option value="'Playfair Display', serif" ${activeEvent.customFont === "'Playfair Display', serif" ? 'selected' : ''}>Playfair Display</option>
                     <option value="'Cinzel', serif" ${activeEvent.customFont === "'Cinzel', serif" ? 'selected' : ''}>Cinzel</option>
                     <option value="'Great Vibes', cursive" ${activeEvent.customFont === "'Great Vibes', cursive" ? 'selected' : ''}>Great Vibes</option>

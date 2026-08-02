@@ -134,6 +134,17 @@ export const THEMES = {
     bgPreview: '#0F172A',
     swatches: ['#0F172A', '#38BDF8', '#94A3B8', '#F8FAFC'],
     particleType: 'gold-dust'
+  },
+  'theme-italiana-vogue': {
+    id: 'theme-italiana-vogue',
+    name: '🇮🇹 Italiana High-Fashion Vogue',
+    category: 'general-premium',
+    categoryLabel: 'General Premium',
+    description: 'Italiana Serif & Montserrat Pair — Ultra-Chic High-Fashion & Milan Luxury Celebrations',
+    primaryColor: '#E2B871',
+    bgPreview: '#141118',
+    swatches: ['#141118', '#E2B871', '#F7F3E9', '#2E2338'],
+    particleType: 'gold-dust'
   }
 };
 

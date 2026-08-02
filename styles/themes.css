@@ -242,6 +242,26 @@
   --theme-particle-type: 'gold-dust';
 }
 
+/* 13. ITALIANA HIGH-FASHION VOGUE (Italiana + Montserrat Pair) */
+.theme-italiana-vogue {
+  --theme-bg: #141118;
+  --theme-bg-alt: #0A080D;
+  --theme-card-bg: rgba(30, 24, 38, 0.8);
+  --theme-card-border: rgba(226, 184, 113, 0.3);
+  --theme-accent: #E2B871;
+  --theme-accent-hover: #C59B54;
+  --theme-accent-glow: rgba(226, 184, 113, 0.4);
+  --theme-text-primary: #F7F3E9;
+  --theme-text-secondary: #D4C9BD;
+  --theme-text-muted: #9E9183;
+  --theme-font-title: 'Italiana', serif;
+  --theme-font-script: 'Great Vibes', cursive;
+  --theme-font-body: 'Montserrat', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #0A080D 0%, #251B2E 50%, #110B16 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(226, 184, 113, 0.12) 0%, transparent 70%);
+  --theme-particle-type: 'gold-dust';
+}
+
 /* Application of theme variables on the invitation wrapper */
 .invitation-wrapper {
   background-color: var(--theme-bg, #0F172A);
