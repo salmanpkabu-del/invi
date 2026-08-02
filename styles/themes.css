@@ -1,0 +1,294 @@
+/* ==========================================================================
+   CELEBRATI — ULTRA-PREMIUM THEME SYSTEM DEFINITIONS (12 Themes)
+   ========================================================================== */
+
+/* 1. ROYAL SOLITAIRE (Burgundy, Rose Gold, Ivory) */
+.theme-royal {
+  --theme-bg: #2B0910;
+  --theme-bg-alt: #1F060B;
+  --theme-card-bg: rgba(61, 15, 26, 0.7);
+  --theme-card-border: rgba(235, 185, 120, 0.25);
+  --theme-accent: #E5A965;
+  --theme-accent-hover: #D4954F;
+  --theme-accent-glow: rgba(229, 169, 101, 0.35);
+  --theme-text-primary: #FFF5EA;
+  --theme-text-secondary: #D4B6A6;
+  --theme-text-muted: #9E7A6B;
+  --theme-font-title: 'Cormorant Garamond', serif;
+  --theme-font-script: 'Great Vibes', cursive;
+  --theme-font-body: 'Plus Jakarta Sans', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #180307 0%, #3D0F1A 50%, #20060C 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(229, 169, 101, 0.08) 0%, transparent 60%);
+  --theme-particle-type: 'petals';
+}
+
+/* 2. MIDNIGHT LUXE (Deep Emerald, Gold Foil) */
+.theme-midnight {
+  --theme-bg: #061811;
+  --theme-bg-alt: #030D09;
+  --theme-card-bg: rgba(12, 38, 28, 0.75);
+  --theme-card-border: rgba(212, 175, 55, 0.3);
+  --theme-accent: #D4AF37;
+  --theme-accent-hover: #B89324;
+  --theme-accent-glow: rgba(212, 175, 55, 0.4);
+  --theme-text-primary: #F0FDF4;
+  --theme-text-secondary: #A7F3D0;
+  --theme-text-muted: #6EE7B7;
+  --theme-font-title: 'Playfair Display', serif;
+  --theme-font-script: 'Alex Brush', cursive;
+  --theme-font-body: 'Inter', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #020806 0%, #08291D 50%, #03120C 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+  --theme-particle-type: 'gold-dust';
+}
+
+/* 3. VELVET NOIR (Obsidian & Champagne Glow) */
+.theme-velvet {
+  --theme-bg: #0A0A0F;
+  --theme-bg-alt: #050508;
+  --theme-card-bg: rgba(22, 22, 34, 0.75);
+  --theme-card-border: rgba(255, 215, 0, 0.2);
+  --theme-accent: #FFD700;
+  --theme-accent-hover: #E6C200;
+  --theme-accent-glow: rgba(255, 215, 0, 0.4);
+  --theme-text-primary: #FFFFFF;
+  --theme-text-secondary: #CBD5E1;
+  --theme-text-muted: #64748B;
+  --theme-font-title: 'Playfair Display', serif;
+  --theme-font-script: 'Alex Brush', cursive;
+  --theme-font-body: 'Plus Jakarta Sans', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #040407 0%, #141424 50%, #07070E 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.09) 0%, transparent 70%);
+  --theme-particle-type: 'gold-dust';
+}
+
+/* 4. CELESTIAL ROMANCE (Soft Blush, Lavender) */
+.theme-celestial {
+  --theme-bg: #1A1325;
+  --theme-bg-alt: #110B1B;
+  --theme-card-bg: rgba(41, 28, 59, 0.7);
+  --theme-card-border: rgba(226, 192, 238, 0.25);
+  --theme-accent: #E2C0EE;
+  --theme-accent-hover: #C698D6;
+  --theme-accent-glow: rgba(226, 192, 238, 0.35);
+  --theme-text-primary: #FAF5FF;
+  --theme-text-secondary: #E9D5FF;
+  --theme-text-muted: #C084FC;
+  --theme-font-title: 'Cormorant Garamond', serif;
+  --theme-font-script: 'Great Vibes', cursive;
+  --theme-font-body: 'Plus Jakarta Sans', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #0F0918 0%, #291B3A 50%, #150E23 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(226, 192, 238, 0.1) 0%, transparent 65%);
+  --theme-particle-type: 'stars';
+}
+
+/* 5. CHAPEL WHITE & SILVER (Cathedral White & Platinum) */
+.theme-chapel-white {
+  --theme-bg: #0F172A;
+  --theme-bg-alt: #090D16;
+  --theme-card-bg: rgba(30, 41, 59, 0.8);
+  --theme-card-border: rgba(203, 213, 225, 0.3);
+  --theme-accent: #CBD5E1;
+  --theme-accent-hover: #94A3B8;
+  --theme-accent-glow: rgba(203, 213, 225, 0.35);
+  --theme-text-primary: #F8FAFC;
+  --theme-text-secondary: #E2E8F0;
+  --theme-text-muted: #94A3B8;
+  --theme-font-title: 'Cormorant Garamond', serif;
+  --theme-font-script: 'Great Vibes', cursive;
+  --theme-font-body: 'Inter', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #090E1A 0%, #1E293B 50%, #0B132B 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(203, 213, 225, 0.12) 0%, transparent 70%);
+  --theme-particle-type: 'stars';
+}
+
+/* 6. SAFFRON & CRIMSON GOLD (Hindu Wedding) */
+.theme-hindu-mandala {
+  --theme-bg: #5A180E;
+  --theme-bg-alt: #380C07;
+  --theme-card-bg: rgba(90, 24, 14, 0.8);
+  --theme-card-border: rgba(255, 153, 51, 0.35);
+  --theme-accent: #FF9933;
+  --theme-accent-hover: #E6801A;
+  --theme-accent-glow: rgba(255, 153, 51, 0.4);
+  --theme-text-primary: #FFF8F0;
+  --theme-text-secondary: #FFE0B2;
+  --theme-text-muted: #FFB74D;
+  --theme-font-title: 'Cinzel', serif;
+  --theme-font-script: 'Great Vibes', cursive;
+  --theme-font-body: 'Plus Jakarta Sans', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #300804 0%, #6E1F13 50%, #3B0D07 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(255, 153, 51, 0.15) 0%, transparent 70%);
+  --theme-particle-type: 'petals';
+}
+
+/* 7. MARIGOLD BARAAT (Sangeet & Haldi) */
+.theme-marigold-baraat {
+  --theme-bg: #4A1208;
+  --theme-bg-alt: #2E0A04;
+  --theme-card-bg: rgba(74, 18, 8, 0.8);
+  --theme-card-border: rgba(255, 193, 7, 0.35);
+  --theme-accent: #FFC107;
+  --theme-accent-hover: #FFA000;
+  --theme-accent-glow: rgba(255, 193, 7, 0.4);
+  --theme-text-primary: #FFF8E1;
+  --theme-text-secondary: #FFE082;
+  --theme-text-muted: #FFCA28;
+  --theme-font-title: 'Cinzel', serif;
+  --theme-font-script: 'Great Vibes', cursive;
+  --theme-font-body: 'Plus Jakarta Sans', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #260803 0%, #5E180A 50%, #360E05 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(255, 193, 7, 0.15) 0%, transparent 70%);
+  --theme-particle-type: 'petals';
+}
+
+/* 8. EMERALD ELEGANCE (Muslim Nikkah) */
+.theme-muslim-emerald {
+  --theme-bg: #004B23;
+  --theme-bg-alt: #002913;
+  --theme-card-bg: rgba(0, 75, 35, 0.75);
+  --theme-card-border: rgba(80, 200, 120, 0.3);
+  --theme-accent: #50C878;
+  --theme-accent-hover: #3EB063;
+  --theme-accent-glow: rgba(80, 200, 120, 0.4);
+  --theme-text-primary: #F0FFF0;
+  --theme-text-secondary: #C8E6C9;
+  --theme-text-muted: #81C784;
+  --theme-font-title: 'Amiri', serif;
+  --theme-font-script: 'Alex Brush', cursive;
+  --theme-font-body: 'Inter', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #001C0D 0%, #005F2C 50%, #002E15 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(80, 200, 120, 0.12) 0%, transparent 70%);
+  --theme-particle-type: 'stars';
+}
+
+/* 9. DESERT ROSE NIKKAH (Dusty Rose & Bronze) */
+.theme-desert-rose {
+  --theme-bg: #2B1E2A;
+  --theme-bg-alt: #1A1119;
+  --theme-card-bg: rgba(43, 30, 42, 0.8);
+  --theme-card-border: rgba(244, 162, 97, 0.3);
+  --theme-accent: #F4A261;
+  --theme-accent-hover: #E76F51;
+  --theme-accent-glow: rgba(244, 162, 97, 0.4);
+  --theme-text-primary: #FFF1E6;
+  --theme-text-secondary: #F8EDEB;
+  --theme-text-muted: #E0A96D;
+  --theme-font-title: 'Amiri', serif;
+  --theme-font-script: 'Great Vibes', cursive;
+  --theme-font-body: 'Plus Jakarta Sans', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #160D15 0%, #3B2A3A 50%, #20151F 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(244, 162, 97, 0.12) 0%, transparent 70%);
+  --theme-particle-type: 'gold-dust';
+}
+
+/* 10. IVORY & ROYAL ANAND KARAJ (Sikh Wedding) */
+.theme-sikh-ivory {
+  --theme-bg: #0B192C;
+  --theme-bg-alt: #060E1A;
+  --theme-card-bg: rgba(11, 25, 44, 0.8);
+  --theme-card-border: rgba(59, 130, 246, 0.3);
+  --theme-accent: #3B82F6;
+  --theme-accent-hover: #2563EB;
+  --theme-accent-glow: rgba(59, 130, 246, 0.4);
+  --theme-text-primary: #F8FAFC;
+  --theme-text-secondary: #93C5FD;
+  --theme-text-muted: #60A5FA;
+  --theme-font-title: 'Cinzel', serif;
+  --theme-font-script: 'Great Vibes', cursive;
+  --theme-font-body: 'Inter', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #030811 0%, #1E3E62 50%, #081324 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+  --theme-particle-type: 'gold-dust';
+}
+
+/* 11. NEON LUXE PARTY (Birthday Gala) */
+.theme-neon-party {
+  --theme-bg: #111827;
+  --theme-bg-alt: #0B0F19;
+  --theme-card-bg: rgba(17, 24, 39, 0.85);
+  --theme-card-border: rgba(236, 72, 153, 0.35);
+  --theme-accent: #EC4899;
+  --theme-accent-hover: #DB2777;
+  --theme-accent-glow: rgba(236, 72, 153, 0.45);
+  --theme-text-primary: #F9FAFB;
+  --theme-text-secondary: #F472B6;
+  --theme-text-muted: #F43F5E;
+  --theme-font-title: 'Playfair Display', serif;
+  --theme-font-script: 'Alex Brush', cursive;
+  --theme-font-body: 'Plus Jakarta Sans', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #0A0512 0%, #2E103B 50%, #0F172A 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+  --theme-particle-type: 'stars';
+}
+
+/* 12. PLATINUM CORPORATE GALA (Tech & Corporate) */
+.theme-gala-corporate {
+  --theme-bg: #0F172A;
+  --theme-bg-alt: #020617;
+  --theme-card-bg: rgba(15, 23, 42, 0.85);
+  --theme-card-border: rgba(56, 189, 248, 0.3);
+  --theme-accent: #38BDF8;
+  --theme-accent-hover: #0284C7;
+  --theme-accent-glow: rgba(56, 189, 248, 0.4);
+  --theme-text-primary: #F8FAFC;
+  --theme-text-secondary: #94A3B8;
+  --theme-text-muted: #64748B;
+  --theme-font-title: 'Inter', serif;
+  --theme-font-script: 'Alex Brush', cursive;
+  --theme-font-body: 'Inter', sans-serif;
+  --theme-hero-gradient: linear-gradient(135deg, #020617 0%, #1E293B 50%, #0F172A 100%);
+  --theme-pattern-overlay: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+  --theme-particle-type: 'gold-dust';
+}
+
+/* Application of theme variables on the invitation wrapper */
+.invitation-wrapper {
+  background-color: var(--theme-bg, #0F172A);
+  color: var(--theme-text-primary, #FFF);
+  font-family: var(--theme-font-body, sans-serif);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.invitation-wrapper h1,
+.invitation-wrapper h2,
+.invitation-wrapper h3,
+.invitation-wrapper .section-title {
+  font-family: var(--theme-font-title, serif);
+}
+
+.invitation-wrapper .script-font {
+  font-family: var(--theme-font-script, cursive);
+  color: var(--theme-accent);
+}
+
+.invitation-wrapper .theme-accent-text {
+  color: var(--theme-accent);
+}
+
+.invitation-wrapper .theme-card {
+  background: var(--theme-card-bg);
+  border: 1px solid var(--theme-card-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.invitation-wrapper .btn-accent {
+  background: var(--theme-accent);
+  color: #0F172A;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 4px 20px var(--theme-accent-glow);
+  transition: var(--transition-fast);
+}
+
+.invitation-wrapper .btn-accent:hover {
+  background: var(--theme-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px var(--theme-accent-glow);
+}

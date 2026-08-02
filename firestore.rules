@@ -1,0 +1,39 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    // --------------------------------------------------------------------------
+    // EVENTS
+    // Each user has their own collection of events under their uid.
+    // --------------------------------------------------------------------------
+    match /users/{userId}/events/{eventId} {
+      
+      // Admins (Couples) can create, read, update, and delete their own events
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Public / Guests can READ an event if it is published
+      allow read: if resource.data.status == 'published';
+      
+      // RSVPs subcollection
+      match /rsvps/{rsvpId} {
+        // Admins can read all RSVPs for their event
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+        
+        // Guests can create RSVPs
+        allow create: if true;
+      }
+      
+      // Wishes subcollection
+      match /wishes/{wishId} {
+        // Admins can manage wishes
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+        
+        // Guests can read approved wishes, and create new ones
+        allow read: if resource.data.approved == true;
+        allow create: if true;
+        allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['hearts']);
+      }
+    }
+  }
+}
