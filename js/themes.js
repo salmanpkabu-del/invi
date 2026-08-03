@@ -12,7 +12,9 @@ export const THEMES = {
     primaryColor: '#E5A965',
     bgPreview: '#2B0910',
     swatches: ['#3D0F1A', '#E5A965', '#FFF5EA', '#1F060B'],
-    particleType: 'petals'
+    particleType: 'petals',
+    layoutType: 'classic',
+    openingType: 'envelope'
   },
   'theme-midnight': {
     id: 'theme-midnight',
@@ -23,7 +25,9 @@ export const THEMES = {
     primaryColor: '#D4AF37',
     bgPreview: '#061811',
     swatches: ['#061811', '#D4AF37', '#F0FDF4', '#0F172A'],
-    particleType: 'gold-dust'
+    particleType: 'gold-dust',
+    layoutType: 'editorial',
+    openingType: 'chapel-veil'
   },
   'theme-velvet': {
     id: 'theme-velvet',
@@ -34,7 +38,9 @@ export const THEMES = {
     primaryColor: '#FFD700',
     bgPreview: '#0A0A0F',
     swatches: ['#0A0A0F', '#FFD700', '#FFFFFF', '#161622'],
-    particleType: 'gold-dust'
+    particleType: 'gold-dust',
+    layoutType: 'modern',
+    openingType: 'editorial-reveal'
   },
   'theme-celestial': {
     id: 'theme-celestial',
@@ -45,7 +51,9 @@ export const THEMES = {
     primaryColor: '#E2C0EE',
     bgPreview: '#1A1325',
     swatches: ['#1A1325', '#E2C0EE', '#FAF5FF', '#291B3A'],
-    particleType: 'stars'
+    particleType: 'stars',
+    layoutType: 'editorial',
+    openingType: 'chapel-veil'
   },
   'theme-chapel-white': {
     id: 'theme-chapel-white',
@@ -56,7 +64,9 @@ export const THEMES = {
     primaryColor: '#CBD5E1',
     bgPreview: '#0F172A',
     swatches: ['#0F172A', '#E2E8F0', '#FFFFFF', '#334155'],
-    particleType: 'stars'
+    particleType: 'stars',
+    layoutType: 'editorial',
+    openingType: 'chapel-veil'
   },
   'theme-hindu-mandala': {
     id: 'theme-hindu-mandala',
@@ -67,7 +77,9 @@ export const THEMES = {
     primaryColor: '#FF9933',
     bgPreview: '#5A180E',
     swatches: ['#5A180E', '#FF9933', '#FFD700', '#FFFFFF'],
-    particleType: 'petals'
+    particleType: 'petals',
+    layoutType: 'classic',
+    openingType: 'petal-scroll'
   },
   'theme-marigold-baraat': {
     id: 'theme-marigold-baraat',
@@ -78,7 +90,9 @@ export const THEMES = {
     primaryColor: '#FFC107',
     bgPreview: '#4A1208',
     swatches: ['#4A1208', '#FFC107', '#E65100', '#FFF8E1'],
-    particleType: 'petals'
+    particleType: 'petals',
+    layoutType: 'modern',
+    openingType: 'petal-scroll'
   },
   'theme-muslim-emerald': {
     id: 'theme-muslim-emerald',
@@ -89,7 +103,9 @@ export const THEMES = {
     primaryColor: '#50C878',
     bgPreview: '#004B23',
     swatches: ['#004B23', '#50C878', '#D4AF37', '#F0FFF0'],
-    particleType: 'stars'
+    particleType: 'stars',
+    layoutType: 'classic',
+    openingType: 'crescent-reveal'
   },
   'theme-desert-rose': {
     id: 'theme-desert-rose',
@@ -100,7 +116,9 @@ export const THEMES = {
     primaryColor: '#F4A261',
     bgPreview: '#2B1E2A',
     swatches: ['#2B1E2A', '#F4A261', '#E76F51', '#FFF1E6'],
-    particleType: 'gold-dust'
+    particleType: 'gold-dust',
+    layoutType: 'editorial',
+    openingType: 'crescent-reveal'
   },
   'theme-sikh-ivory': {
     id: 'theme-sikh-ivory',
@@ -111,7 +129,9 @@ export const THEMES = {
     primaryColor: '#3B82F6',
     bgPreview: '#0B192C',
     swatches: ['#0B192C', '#3B82F6', '#F59E0B', '#F8FAFC'],
-    particleType: 'gold-dust'
+    particleType: 'gold-dust',
+    layoutType: 'classic',
+    openingType: 'crescent-reveal'
   },
   'theme-neon-party': {
     id: 'theme-neon-party',
@@ -122,7 +142,9 @@ export const THEMES = {
     primaryColor: '#EC4899',
     bgPreview: '#111827',
     swatches: ['#111827', '#EC4899', '#06B6D4', '#F472B6'],
-    particleType: 'stars'
+    particleType: 'stars',
+    layoutType: 'modern',
+    openingType: 'confetti-burst'
   },
   'theme-gala-corporate': {
     id: 'theme-gala-corporate',
@@ -133,7 +155,9 @@ export const THEMES = {
     primaryColor: '#38BDF8',
     bgPreview: '#0F172A',
     swatches: ['#0F172A', '#38BDF8', '#94A3B8', '#F8FAFC'],
-    particleType: 'gold-dust'
+    particleType: 'gold-dust',
+    layoutType: 'modern',
+    openingType: 'editorial-reveal'
   },
   'theme-italiana-vogue': {
     id: 'theme-italiana-vogue',
@@ -144,7 +168,9 @@ export const THEMES = {
     primaryColor: '#E2B871',
     bgPreview: '#141118',
     swatches: ['#141118', '#E2B871', '#F7F3E9', '#2E2338'],
-    particleType: 'gold-dust'
+    particleType: 'gold-dust',
+    layoutType: 'editorial',
+    openingType: 'editorial-reveal'
   }
 };
 

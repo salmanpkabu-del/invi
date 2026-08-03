@@ -19,12 +19,8 @@ class CelebratiApp {
 
   async init() {
     await db.waitForInit();
-    // Pull events if logged in
-    if (db.isAdminLoggedIn() && typeof db.pullEventsFromFirebase === 'function') {
-      await db.pullEventsFromFirebase();
-    }
     
-    // Check hash first to decide if auth is needed
+    // Check hash first to decide route
     const hash = window.location.hash;
     const isPublicView = hash.startsWith('#invite-') || hash.startsWith('#tracker-');
 
@@ -33,19 +29,21 @@ class CelebratiApp {
       this.setupPublicView();
       this.handleHashChange();
     } else {
-      // Admin area — require login
+      // Admin area (or default app access) — require login
+      const targetView = (hash === '#dashboard') ? 'dashboard' : 'admin';
+      
       if (!db.isAdminLoggedIn()) {
         this.showSwitcherBar(false);
+        if (this.appContainer) this.appContainer.innerHTML = '';
         showLoginGate(async () => {
           if (typeof db.pullEventsFromFirebase === 'function') await db.pullEventsFromFirebase();
           this.bootApp();
-          if (window.location.hash === '#admin') this.switchView('admin');
-          else if (window.location.hash === '#dashboard') this.switchView('dashboard');
+          this.switchView(targetView);
         });
       } else {
+        if (typeof db.pullEventsFromFirebase === 'function') await db.pullEventsFromFirebase();
         this.bootApp();
-        if (window.location.hash === '#admin') this.switchView('admin');
-        else if (window.location.hash === '#dashboard') this.switchView('dashboard');
+        this.switchView(targetView);
       }
     }
 

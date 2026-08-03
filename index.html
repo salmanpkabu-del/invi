@@ -5,44 +5,164 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Celebrati — India's Most Luxurious Digital Wedding Invitations</title>
   <meta name="description" content="Create ultra-luxury story-based digital invitations, track RSVPs in real time with private couple links, and issue QR entry passes. Only ₹699 per wedding.">
+  <meta property="og:title" content="Celebrati — India's Most Luxurious Digital Wedding Invitations">
+  <meta property="og:description" content="Create ultra-luxury story-based digital invitations, track RSVPs in real time, and issue QR entry passes. Only ₹699.">
+  <meta property="og:image" content="skylightlogo.svg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
   
-  <link rel="stylesheet" href="styles/landing.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F59E0B'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg>">
+  <link rel="stylesheet" href="styles/landing.css?v=5.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="landing-body">
 
-  <!-- Navbar -->
-  <nav class="landing-nav">
-    <div class="landing-logo">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-      </svg>
-      CELEBRATI
-    </div>
-    <ul class="landing-nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="app.html#admin" class="btn-cta-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Admin Login</a></li>
-    </ul>
-  </nav>
+  <!-- ══════════════════════════════════════════════════════════════════
+       HERO — Full-Screen Boomerang Video + Editorial Layout
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="hero-cinematic" id="hero">
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div>
-      <div class="hero-badge">
-        <span>✨ Ultra-Luxury Digital Invitations</span>
+    <!-- Boomerang video container (JS fills this) -->
+    <div class="hero-video-wrap" id="hero-video-wrap">
+      <!-- Placeholder gradient shown until video loads -->
+      <div class="hero-video-placeholder"></div>
+    </div>
+
+    <!-- Dark luxury scrim overlay -->
+    <div class="hero-scrim"></div>
+
+    <!-- Floating Nav (sits inside hero so it overlaps video) -->
+    <nav class="hero-nav" id="hero-nav">
+      <!-- Logo -->
+      <a href="/" class="hero-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        CELEBRATI
+      </a>
+
+      <!-- Desktop pill nav -->
+      <div class="hero-nav-pill">
+        <a href="#features" class="hero-nav-link">Features</a>
+        <a href="#themes"   class="hero-nav-link">Themes</a>
+        <a href="#pricing"  class="hero-nav-link hero-nav-link--active">Pricing</a>
+        <a href="app.html#admin" class="hero-nav-cta">Create Now</a>
       </div>
-      <h1 class="hero-title">
-        Elevate Your Wedding With <span>Cinematic Digital Invitations</span>
-      </h1>
-      <p class="hero-subtitle">
-        Tell your love story with breathtaking animated themes, background music, seamless RSVP tracking, and instant digital QR entry passes for your guests.
-      </p>
-      <div class="cta-group">
-        <a href="app.html#admin" class="btn-cta-primary">Create Your Invitation — ₹699</a>
-        <a href="app.html#invite-evt-wedding-01" class="btn-cta-secondary" target="_blank">View Live Demo 💌</a>
+
+      <!-- Right side actions -->
+      <div class="hero-nav-right">
+        <a href="app.html#admin" class="hero-nav-login">Admin Login</a>
+        <!-- Animated hamburger (mobile only) -->
+        <button class="hero-hamburger" id="hero-hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="hamburger-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <svg class="close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile backdrop -->
+    <div class="mobile-backdrop" id="mobile-backdrop"></div>
+
+    <!-- Mobile drawer (slides from right) -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <div class="mobile-drawer-inner">
+        <nav class="mobile-drawer-links">
+          <a href="#features" class="mobile-drawer-link" data-delay="0">Features</a>
+          <a href="#themes"   class="mobile-drawer-link" data-delay="1">Themes</a>
+          <a href="#pricing"  class="mobile-drawer-link" data-delay="2">Pricing</a>
+        </nav>
+        <div class="mobile-drawer-ctas" data-delay="3">
+          <a href="app.html#admin" class="hero-nav-login mobile-drawer-login">Admin Login</a>
+          <a href="app.html#admin" class="mobile-drawer-cta-btn">Create Invitation — ₹699</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Balanced Luxury Hero Content ──────────────────────────────── -->
+    <div class="hero-content-container">
+      <div class="hero-split-grid">
+        <div class="hero-text-block">
+          <p class="hero-eyebrow">✨ Ultra-Luxury Digital Invitations</p>
+          <h1 class="hero-headline">
+            Your love story,<br>
+            <span class="hero-headline-accent">cinematically told</span>
+          </h1>
+          <p class="hero-sub">Breathtaking 3D envelope openings, bespoke theme artwork, background music, live RSVP tracking &amp; digital QR gate passes.</p>
+          <div class="hero-ctas-group">
+            <a href="app.html#admin" class="hero-cta-primary">Create Invitation — ₹699</a>
+            <a href="app.html#invite-evt-wedding-01" target="_blank" class="hero-cta-ghost">
+              <span class="hero-play-icon">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg>
+              </span>
+              View Live Demo 💌
+            </a>
+          </div>
+          <div class="hero-trust-mini">
+            <span>⭐ 500+ Celebrations</span> • <span>13 Custom Themes</span> • <span>PIN Protected</span>
+          </div>
+        </div>
+
+        <!-- 3D Floating Phone Mockup & Live Theme Preview -->
+        <div class="hero-visual-block">
+          <div class="hero-phone-mockup">
+            <div class="phone-notch-bar"></div>
+            <div class="phone-screen-content">
+              <div class="preview-theme-card">
+                <div class="preview-seal">⚜️</div>
+                <div class="preview-monogram">Z &amp; T</div>
+                <div class="preview-title">Zainab &amp; Tariq</div>
+                <div class="preview-date">DECEMBER 18, 2026 • MUMBAI</div>
+                <div class="preview-countdown">
+                  <div><span>08</span><label>DAYS</label></div>
+                  <div><span>14</span><label>HRS</label></div>
+                  <div><span>22</span><label>MINS</label></div>
+                </div>
+                <div class="preview-rsvp-btn">RSVP Attendance 💌</div>
+              </div>
+            </div>
+            <div class="hero-phone-floating-pill">
+              <span class="pill-dot"></span> 13 Bespoke Cultural Themes
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Floating Canvas Particles -->
+  <canvas id="landing-particle-canvas"></canvas>
+
+  <!-- Trust & Social Proof Strip -->
+  <section class="trust-strip">
+    <div class="trust-container">
+      <div class="trust-item">
+        <div class="trust-number">500+</div>
+        <div class="trust-label">Celebrations Powered</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <div class="trust-number">13</div>
+        <div class="trust-label">Bespoke Themes</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <div class="trust-number">100%</div>
+        <div class="trust-label">PIN Protected RSVP Tracker</div>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <div class="trust-number">₹699</div>
+        <div class="trust-label">One-Time Event License</div>
       </div>
     </div>
   </section>
@@ -54,35 +174,110 @@
       <p>Everything you need to manage your guest list with style and elegance.</p>
     </div>
     <div class="features-grid">
-      <div class="feature-card">
+      <div class="feature-card reveal-on-scroll">
         <div class="feature-icon">💎</div>
         <h3>Ultra-Premium Themes</h3>
         <p>Choose from Royal Burgundy, Gold Foil, Midnight Emerald, and Rose Gold themes crafted by world-class UI designers.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal-on-scroll">
         <div class="feature-icon">📊</div>
         <h3>Dual Link System</h3>
         <p>Send one link for guest RSVPs and a separate PIN-protected tracker link for the couple to view attendance in real time.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal-on-scroll">
         <div class="feature-icon">🎟️</div>
         <h3>Digital QR Passports</h3>
         <p>Automatically issue personalized QR entry passes to attending guests for smooth venue check-ins.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal-on-scroll">
         <div class="feature-icon">⏳</div>
         <h3>Smart Auto-Expiry</h3>
         <p>The public invitation link automatically deactivates after your wedding date passes to maintain complete privacy.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal-on-scroll">
         <div class="feature-icon">🎵</div>
         <h3>Background Music & Story</h3>
         <p>Immerse guests in your romance with custom background songs and dynamic milestone timeline cards.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal-on-scroll">
         <div class="feature-icon">🍽️</div>
         <h3>Dietary & Song Requests</h3>
         <p>Collect meal preferences, dietary restrictions, and song requests straight into your organizer dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Theme Gallery Section -->
+  <section id="themes" class="themes-gallery-section">
+    <div class="section-header">
+      <h2>13 Bespoke Cultural & Luxury Themes</h2>
+      <p>Custom-designed aesthetics tailored for Hindu Mandalas, Nikkah, Anand Karaj, Galas & Modern Celebrations.</p>
+    </div>
+    <div class="theme-tiles-grid">
+      <div class="theme-tile-card tile-royal reveal-on-scroll">
+        <div class="tile-swatch-bar">
+          <span style="background:#E5A965"></span>
+          <span style="background:#3D0F1A"></span>
+          <span style="background:#FFF5EA"></span>
+        </div>
+        <h3>Royal Solitaire</h3>
+        <p>Burgundy, Rose Gold & Ivory Serif</p>
+        <span class="theme-tag">Best Seller</span>
+      </div>
+
+      <div class="theme-tile-card tile-midnight reveal-on-scroll">
+        <div class="tile-swatch-bar">
+          <span style="background:#D4AF37"></span>
+          <span style="background:#08291D"></span>
+          <span style="background:#F0FDF4"></span>
+        </div>
+        <h3>Midnight Luxe</h3>
+        <p>Deep Emerald & 24K Gold Foil</p>
+        <span class="theme-tag">Luxury</span>
+      </div>
+
+      <div class="theme-tile-card tile-hindu reveal-on-scroll">
+        <div class="tile-swatch-bar">
+          <span style="background:#FF9933"></span>
+          <span style="background:#6E1F13"></span>
+          <span style="background:#FFF8F0"></span>
+        </div>
+        <h3>Saffron Mandala</h3>
+        <p>Crimson, Royal Marigold & Gold</p>
+        <span class="theme-tag">Vedic Wedding</span>
+      </div>
+
+      <div class="theme-tile-card tile-emerald reveal-on-scroll">
+        <div class="tile-swatch-bar">
+          <span style="background:#50C878"></span>
+          <span style="background:#004B23"></span>
+          <span style="background:#F0FFF0"></span>
+        </div>
+        <h3>Emerald Nikkah</h3>
+        <p>Islamic Calligraphy & Jade Accent</p>
+        <span class="theme-tag">Nikkah Edition</span>
+      </div>
+
+      <div class="theme-tile-card tile-sikh reveal-on-scroll">
+        <div class="tile-swatch-bar">
+          <span style="background:#3B82F6"></span>
+          <span style="background:#0B192C"></span>
+          <span style="background:#F8FAFC"></span>
+        </div>
+        <h3>Ivory Anand Karaj</h3>
+        <p>Royal Sapphire Blue & Platinum</p>
+        <span class="theme-tag">Sikh Ceremony</span>
+      </div>
+
+      <div class="theme-tile-card tile-celestial reveal-on-scroll">
+        <div class="tile-swatch-bar">
+          <span style="background:#E2C0EE"></span>
+          <span style="background:#1A1325"></span>
+          <span style="background:#FAF5FF"></span>
+        </div>
+        <h3>Celestial Romance</h3>
+        <p>Blush Lavender & Starry Glow</p>
+        <span class="theme-tag">Modern</span>
       </div>
     </div>
   </section>
@@ -94,8 +289,9 @@
       <p>Pay once. No hidden charges. No monthly subscriptions.</p>
     </div>
 
-    <div class="pricing-card">
+    <div class="pricing-card reveal-on-scroll">
       <div class="pricing-tag">All-Inclusive Wedding Package</div>
+      <div class="price-strikethrough">Valued at ₹3,999</div>
       <div class="price-amount"><span class="price-currency">₹</span>699</div>
       <div class="price-period">One-time fee per wedding event</div>
 
@@ -115,13 +311,95 @@
 
   <!-- Footer -->
   <footer class="landing-footer">
-    <div>
-      © 2026 Celebrati. All rights reserved. Ultra-Luxury Invitation & Event Platform.
+    <div class="footer-container">
+      <div class="footer-col brand-col">
+        <div class="landing-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          CELEBRATI
+        </div>
+        <p class="footer-tagline">Crafting unforgettable, ultra-luxury digital invitation experiences for celebrations across the world.</p>
+      </div>
+
+      <div class="footer-col links-col">
+        <h4>Navigation</h4>
+        <a href="#features">Features</a>
+        <a href="#themes">13 Bespoke Themes</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+
+      <div class="footer-col admin-col">
+        <h4>Host Access</h4>
+        <a href="app.html#admin">Admin Creator Studio</a>
+        <a href="app.html#dashboard">RSVP Host Dashboard</a>
+      </div>
     </div>
-    <div>
-      <a href="app.html#admin" style="color: #94a3b8; text-decoration: none;">Admin Access</a>
+    <div class="footer-bottom">
+      <div>© 2026 Celebrati. All rights reserved. Ultra-Luxury Invitation & Event Platform.</div>
     </div>
   </footer>
 
+  <!-- Script for Boomerang Video BG, Mobile Drawer, Particles and Scroll Reveal -->
+  <script type="module">
+    import { ParticleEngine } from './js/particles.js';
+    import { BoomerangBg } from './js/boomerang.js';
+
+    // 1. Boomerang Video Background Initialization
+    const videoWrap = document.getElementById('hero-video-wrap');
+    if (videoWrap) {
+      // Default video asset — user can replace src URL anytime
+      const BG_VIDEO_URL = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_131941_d136af49-e243-493a-be14-6ff3f24e09e6.mp4';
+      try {
+        new BoomerangBg(BG_VIDEO_URL, videoWrap, { maxWidth: 960, fps: 30 });
+      } catch (err) {
+        console.warn('Boomerang video initialization deferred:', err);
+      }
+    }
+
+    // 2. Floating Gold Particles (below hero)
+    const particleCanvas = document.getElementById('landing-particle-canvas');
+    if (particleCanvas) {
+      const engine = new ParticleEngine(particleCanvas);
+      engine.setType('gold-dust');
+      engine.start();
+    }
+
+    // 3. Mobile Hamburger & Drawer Handler
+    const hamBtn = document.getElementById('hero-hamburger-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    const backdrop = document.getElementById('mobile-backdrop');
+
+    function toggleMenu(show) {
+      const active = show !== undefined ? show : !drawer.classList.contains('is-active');
+      if (hamBtn) {
+        hamBtn.classList.toggle('is-active', active);
+        hamBtn.setAttribute('aria-expanded', active ? 'true' : 'false');
+      }
+      if (drawer) drawer.classList.toggle('is-active', active);
+      if (backdrop) backdrop.classList.toggle('is-active', active);
+      document.body.style.overflow = active ? 'hidden' : '';
+    }
+
+    if (hamBtn) hamBtn.addEventListener('click', () => toggleMenu());
+    if (backdrop) backdrop.addEventListener('click', () => toggleMenu(false));
+    if (drawer) {
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+      });
+    }
+
+    // 4. Scroll reveal observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
+

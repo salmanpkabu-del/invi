@@ -125,18 +125,45 @@ export function renderAdminView(container, onNavigateToDashboard, onNavigateToIn
                   <div class="theme-pick-card ${activeEvent.theme === key ? 'selected' : ''}"
                        data-theme="${key}"
                        style="background: linear-gradient(145deg, ${t.bgPreview} 0%, ${t.swatches[0]} 100%);">
-                    <div class="theme-pick-preview" style="background:${t.bgPreview};">
-                      <div style="text-align:center; padding:1rem 0.5rem;">
-                        <div style="font-size:0.55rem; letter-spacing:2px; text-transform:uppercase; color:${t.primaryColor}; opacity:0.8; margin-bottom:0.3rem;">${t.categoryLabel || 'Luxury'}</div>
-                        <div style="font-size:0.92rem; font-weight:700; color:#fff; font-family:Georgia,serif; line-height:1.2;">${t.name.split(' ')[1] || 'Theme'}</div>
-                        <div style="margin-top:0.4rem; display:flex; justify-content:center; gap:0.25rem;">
-                          ${t.swatches.map(s => `<span style="width:10px;height:10px;border-radius:50%;background:${s};display:inline-block;"></span>`).join('')}
+                    <div class="theme-pick-preview" style="min-height: 180px; position: relative; border-radius: 12px 12px 0 0; border-bottom: 2px solid ${t.primaryColor}; background: linear-gradient(145deg, ${t.bgPreview} 0%, ${t.swatches[0] || t.bgPreview} 100%); overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                      ${t.layoutType === 'modern' ? `
+                        <div style="display:flex; width:100%; height:100%; padding:1.2rem; align-items:center; justify-content:space-between; box-sizing:border-box;">
+                          <div style="width:45%; height:85px; background:rgba(255,255,255,0.06); border-radius:10px; border:1px solid ${t.primaryColor}; box-shadow:0 8px 16px rgba(0,0,0,0.5);"></div>
+                          <div style="width:45%; display:flex; flex-direction:column; gap:8px;">
+                            <div style="width:100%; height:8px; background:${t.primaryColor}; border-radius:4px;"></div>
+                            <div style="width:70%; height:6px; background:rgba(255,255,255,0.4); border-radius:3px;"></div>
+                            <div style="width:40%; height:6px; background:rgba(255,255,255,0.2); border-radius:3px;"></div>
+                          </div>
+                        </div>
+                      ` : t.layoutType === 'editorial' ? `
+                        <div style="width:100%; height:100%; position:relative; padding:1.2rem; box-sizing:border-box; background:rgba(255,255,255,0.02);">
+                          <div style="font-size:1.8rem; font-weight:900; font-family:serif; letter-spacing:-1px; color:${t.primaryColor}; line-height:0.95; margin-top:0.3rem;">ALAYA<br>& FARHAN</div>
+                          <div style="position:absolute; bottom:15px; left:1.2rem; width:50px; height:3px; background:${t.primaryColor};"></div>
+                        </div>
+                      ` : `
+                        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; height:100%; padding:1.2rem; box-sizing:border-box;">
+                          <div style="width:50px; height:50px; border-radius:50%; border:2px solid ${t.primaryColor}; background:rgba(255,255,255,0.08); margin-bottom:10px; box-shadow:0 5px 15px rgba(0,0,0,0.4);"></div>
+                          <div style="width:90px; height:6px; background:${t.primaryColor}; border-radius:3px; margin-bottom:6px;"></div>
+                          <div style="width:50px; height:4px; background:rgba(255,255,255,0.4); border-radius:2px;"></div>
+                        </div>
+                      `}
+
+                      <div style="position: absolute; bottom: 0; inset-x: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 70%, transparent 100%); padding: 0.75rem 1rem 0.5rem; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <div>
+                          <div style="font-size:0.58rem; letter-spacing:2px; text-transform:uppercase; color:${t.primaryColor}; font-weight: 700;">${t.categoryLabel || 'Luxury'}</div>
+                          <div style="font-size:0.95rem; font-weight:700; color:#fff; font-family:var(--font-display); line-height:1.2;">
+                            ${t.name}
+                          </div>
+                        </div>
+                        <div style="display:flex; gap:0.2rem; background:rgba(0,0,0,0.6); padding:3px 6px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
+                          ${t.swatches.map(s => `<span style="width:8px;height:8px;border-radius:50%;background:${s};display:inline-block;"></span>`).join('')}
                         </div>
                       </div>
                     </div>
                     <div class="theme-pick-info">
                       <div style="font-weight:700; font-size:0.88rem;">${t.name}</div>
-                      <div style="font-size:0.75rem; color:rgba(255,255,255,0.6); margin-top:0.2rem; line-height:1.3;">${t.description}</div>
+                      <div style="font-size:0.75rem; color:rgba(255,255,255,0.6); margin-top:0.2rem; line-height:1.3; margin-bottom: 0.8rem;">${t.description}</div>
+                      <button type="button" class="btn btn-sm btn-outline btn-preview-template" data-theme="${key}" style="width:100%; border-color:rgba(255,255,255,0.2); font-size:0.75rem; padding:0.3rem; margin-top:0.5rem; background: rgba(255,255,255,0.05); color: #fff;">✨ Preview & Customize</button>
                     </div>
                     <div class="theme-pick-check" style="display:${activeEvent.theme === key ? 'flex' : 'none'}; background:${t.primaryColor}; color:#000;">✓</div>
                   </div>
@@ -547,10 +574,33 @@ export function renderAdminView(container, onNavigateToDashboard, onNavigateToIn
         <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;" id="gallery-grid-container">
           ${Object.entries(THEMES).map(([key, t]) => `
             <div class="gallery-card" data-cat="${t.category || 'general-premium'}" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; background: ${t.bgPreview}; transition: transform 0.3s ease;">
-              <div style="height: 160px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(145deg, ${t.bgPreview} 0%, ${t.swatches[0]} 100%);">
-                <div style="font-family: Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">Sample Event</div>
-                <div style="display: flex; gap: 0.25rem;">
-                  ${t.swatches.map(s => `<span style="width:12px;height:12px;border-radius:50%;background:${s};display:inline-block;"></span>`).join('')}
+              <div style="height: 160px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; background: linear-gradient(145deg, ${t.bgPreview} 0%, ${t.swatches[0] || t.bgPreview} 100%); overflow: hidden;">
+                
+                ${t.layoutType === 'modern' ? `
+                  <div style="display:flex; width:100%; height:100%; padding:1.5rem; align-items:center; justify-content:space-between; box-sizing:border-box;">
+                    <div style="width:45%; height:90px; background:rgba(255,255,255,0.05); border-radius:12px; border:1px solid ${t.primaryColor}; box-shadow:0 10px 20px rgba(0,0,0,0.5);"></div>
+                    <div style="width:45%; display:flex; flex-direction:column; gap:8px;">
+                      <div style="width:100%; height:8px; background:${t.primaryColor}; border-radius:4px;"></div>
+                      <div style="width:70%; height:6px; background:rgba(255,255,255,0.4); border-radius:3px;"></div>
+                      <div style="width:40%; height:6px; background:rgba(255,255,255,0.2); border-radius:3px;"></div>
+                    </div>
+                  </div>
+                ` : t.layoutType === 'editorial' ? `
+                  <div style="width:100%; height:100%; position:relative; background:rgba(255,255,255,0.02);">
+                    <div style="position:absolute; top:20px; left:20px; font-size:2.5rem; font-weight:900; font-family:serif; letter-spacing:-2px; color:${t.primaryColor}; line-height:0.9;">A<br>& B</div>
+                    <div style="position:absolute; bottom:20px; left:20px; width:60px; height:4px; background:${t.primaryColor};"></div>
+                    <div style="position:absolute; bottom:20px; right:20px; width:40px; height:40px; background:rgba(255,255,255,0.05); border-left:2px solid ${t.primaryColor};"></div>
+                  </div>
+                ` : `
+                  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; height:100%;">
+                    <div style="width:60px; height:60px; border-radius:50%; border:2px solid ${t.primaryColor}; background:rgba(255,255,255,0.08); margin-bottom:15px; box-shadow:0 5px 15px rgba(0,0,0,0.5);"></div>
+                    <div style="width:100px; height:6px; background:${t.primaryColor}; border-radius:3px; margin-bottom:8px;"></div>
+                    <div style="width:60px; height:4px; background:rgba(255,255,255,0.4); border-radius:2px;"></div>
+                  </div>
+                `}
+                
+                <div style="position:absolute; top:10px; right:10px; display: flex; gap: 0.25rem; background:rgba(0,0,0,0.5); padding:4px; border-radius:12px; backdrop-filter:blur(4px);">
+                  ${t.swatches.map(s => `<span style="width:10px;height:10px;border-radius:50%;background:${s};display:inline-block;"></span>`).join('')}
                 </div>
               </div>
               <div style="padding: 1rem; background: rgba(0,0,0,0.4);">
@@ -691,6 +741,9 @@ export function renderAdminView(container, onNavigateToDashboard, onNavigateToIn
     // Preview Template Button Logic
     container.querySelectorAll('.btn-preview-template').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        // Stop event from bubbling to the card selection
+        e.stopPropagation();
+        e.preventDefault();
         const themeId = e.currentTarget.dataset.theme;
         openLiveTemplatePreview(themeId);
       });
@@ -707,12 +760,36 @@ export function renderAdminView(container, onNavigateToDashboard, onNavigateToIn
         if (file) {
           const reader = new FileReader();
           reader.onload = (evt) => {
-            const b64 = evt.target.result;
-            if (photoUrlInput) photoUrlInput.value = b64;
-            if (photoPreview) {
-              photoPreview.style.backgroundImage = `url(${b64})`;
-              photoPreview.innerHTML = '';
-            }
+            const img = new Image();
+            img.onload = () => {
+              const canvas = document.createElement('canvas');
+              let width = img.width;
+              let height = img.height;
+              const MAX_WIDTH = 800;
+
+              if (width > MAX_WIDTH) {
+                height = Math.round((height * MAX_WIDTH) / width);
+                width = MAX_WIDTH;
+              }
+
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, width, height);
+
+              const compressedB64 = canvas.toDataURL('image/jpeg', 0.7);
+              
+              if (photoUrlInput) {
+                photoUrlInput.value = compressedB64;
+                // Dispatch input event to trigger the debounced autosave
+                photoUrlInput.dispatchEvent(new Event('input', { bubbles: true }));
+              }
+              if (photoPreview) {
+                photoPreview.style.backgroundImage = `url(${compressedB64})`;
+                photoPreview.innerHTML = '';
+              }
+            };
+            img.src = evt.target.result;
           };
           reader.readAsDataURL(file);
         }
@@ -1002,6 +1079,23 @@ Thank you for choosing Celebrati!`);
       });
     }
 
+    // ── Debounced Form Autosave ──────────────────────────────────────────
+    let autosaveTimer = null;
+    const adminForm = container.querySelector('#admin-event-form');
+    if (adminForm) {
+      adminForm.addEventListener('input', () => {
+        clearTimeout(autosaveTimer);
+        autosaveTimer = setTimeout(() => {
+          saveFormData();
+          showToast('✓ Changes autosaved', 'success', 1200);
+        }, 1200);
+      });
+      adminForm.addEventListener('change', () => {
+        saveFormData();
+        refreshPreview();
+      });
+    }
+
     // ── Preview controls ──────────────────────────────────────────────────
     const refreshPreviewBtn = container.querySelector('#btn-refresh-preview');
     if (refreshPreviewBtn) refreshPreviewBtn.addEventListener('click', refreshPreview);
@@ -1074,9 +1168,14 @@ Thank you for choosing Celebrati!`);
 
     const theme = THEMES[themeId] || THEMES['theme-royal'];
 
-    // Temporarily apply theme to active event for live preview
-    activeEvent.theme = themeId;
-    db.saveEvent(activeEvent);
+    // Set initial preview state in sessionStorage (non-destructive)
+    const initialPreviewState = {
+      theme: themeId,
+      customColor: activeEvent.customColor || theme.primaryColor,
+      customFont: activeEvent.customFont || '',
+      visibleSections: activeEvent.visibleSections ? { ...activeEvent.visibleSections } : { story: true, schedule: true, dressCode: true, wishes: true }
+    };
+    sessionStorage.setItem('celebrati_preview_temp', JSON.stringify(initialPreviewState));
 
     modal = document.createElement('div');
     modal.id = 'celebrati-preview-overlay';
@@ -1114,12 +1213,33 @@ Thank you for choosing Celebrati!`);
               <label class="form-label" style="font-size:0.75rem;">✍️ Typography</label>
               <select id="modal-customFont" class="form-select" style="font-size:0.85rem;">
                 <option value="">Default Theme Font</option>
+                <option value="'Italiana', serif" ${activeEvent.customFont === "'Italiana', serif" ? 'selected' : ''}>Italiana (with Montserrat)</option>
                 <option value="'Playfair Display', serif" ${activeEvent.customFont === "'Playfair Display', serif" ? 'selected' : ''}>Playfair Display</option>
                 <option value="'Cinzel', serif" ${activeEvent.customFont === "'Cinzel', serif" ? 'selected' : ''}>Cinzel</option>
                 <option value="'Great Vibes', cursive" ${activeEvent.customFont === "'Great Vibes', cursive" ? 'selected' : ''}>Great Vibes</option>
                 <option value="'Lora', serif" ${activeEvent.customFont === "'Lora', serif" ? 'selected' : ''}>Lora</option>
                 <option value="'Cormorant Garamond', serif" ${activeEvent.customFont === "'Cormorant Garamond', serif" ? 'selected' : ''}>Cormorant Garamond</option>
               </select>
+            </div>
+
+            <!-- Arrangement / Sections -->
+            <div class="form-group" style="margin-bottom:1.25rem;">
+              <label class="form-label" style="font-size:0.75rem;">🔄 Section Visibility</label>
+              <div style="font-size:0.8rem; color:#94A3B8; margin-bottom:0.5rem;">Toggle sections on/off:</div>
+              <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:#FFF; cursor:pointer;">
+                  <input type="checkbox" class="modal-sec-toggle" data-sec="story" ${(activeEvent.visibleSections?.story ?? true) ? 'checked' : ''}> Our Story
+                </label>
+                <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:#FFF; cursor:pointer;">
+                  <input type="checkbox" class="modal-sec-toggle" data-sec="schedule" ${(activeEvent.visibleSections?.schedule ?? true) ? 'checked' : ''}> Schedule & Venues
+                </label>
+                <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:#FFF; cursor:pointer;">
+                  <input type="checkbox" class="modal-sec-toggle" data-sec="dressCode" ${(activeEvent.visibleSections?.dressCode ?? true) ? 'checked' : ''}> Dress Code
+                </label>
+                <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:#FFF; cursor:pointer;">
+                  <input type="checkbox" class="modal-sec-toggle" data-sec="wishes" ${(activeEvent.visibleSections?.wishes ?? true) ? 'checked' : ''}> Wishes Wall
+                </label>
+              </div>
             </div>
           </div>
 
@@ -1148,12 +1268,22 @@ Thank you for choosing Celebrati!`);
 
     const colorInput = document.getElementById('modal-customColor');
     const fontInput = document.getElementById('modal-customFont');
+    const secToggles = document.querySelectorAll('.modal-sec-toggle');
     const iframe = document.getElementById('preview-template-iframe-modal');
 
     function updateLivePreview() {
-      if (colorInput) activeEvent.customColor = colorInput.value;
-      if (fontInput) activeEvent.customFont = fontInput.value;
-      db.saveEvent(activeEvent);
+      const pState = {
+        theme: themeId,
+        customColor: colorInput ? colorInput.value : activeEvent.customColor,
+        customFont: fontInput ? fontInput.value : activeEvent.customFont,
+        visibleSections: { story: true, schedule: true, dressCode: true, wishes: true }
+      };
+      secToggles.forEach(toggle => {
+        pState.visibleSections[toggle.dataset.sec] = toggle.checked;
+      });
+
+      sessionStorage.setItem('celebrati_preview_temp', JSON.stringify(pState));
+
       if (iframe) {
         iframe.src = '';
         setTimeout(() => { iframe.src = `${window.location.origin}/app.html#invite-${activeEvent.id}`; }, 50);
@@ -1162,19 +1292,31 @@ Thank you for choosing Celebrati!`);
 
     if (colorInput) colorInput.addEventListener('change', updateLivePreview);
     if (fontInput) fontInput.addEventListener('change', updateLivePreview);
+    secToggles.forEach(toggle => toggle.addEventListener('change', updateLivePreview));
+
+    function dismissModal() {
+      sessionStorage.removeItem('celebrati_preview_temp');
+      modal.remove();
+    }
 
     document.getElementById('modal-apply-customization').addEventListener('click', () => {
+      sessionStorage.removeItem('celebrati_preview_temp');
       selectedTheme = themeId;
-      if (colorInput) container.querySelector('#field-customColor').value = colorInput.value;
-      if (fontInput) container.querySelector('#field-customFont').value = fontInput.value;
-      saveFormData();
-      modal.remove();
+      activeEvent.theme = themeId;
+      if (colorInput) activeEvent.customColor = colorInput.value;
+      if (fontInput) activeEvent.customFont = fontInput.value;
+      if (!activeEvent.visibleSections) activeEvent.visibleSections = { story: true, schedule: true, dressCode: true, wishes: true };
+      secToggles.forEach(toggle => {
+        activeEvent.visibleSections[toggle.dataset.sec] = toggle.checked;
+      });
+      db.saveEvent(activeEvent);
+      dismissModal();
       renderAdminView(container, onNavigateToDashboard, onNavigateToInvite);
-      showToast('✓ Customization applied!');
+      showToast('✓ Customization applied & saved!');
     });
 
-    document.getElementById('close-preview-overlay').addEventListener('click', () => modal.remove());
-    document.getElementById('close-preview-overlay-x').addEventListener('click', () => modal.remove());
+    document.getElementById('close-preview-overlay').addEventListener('click', dismissModal);
+    document.getElementById('close-preview-overlay-x').addEventListener('click', dismissModal);
   }
 
   function showToast(msg, type = 'success', duration = 2500) {

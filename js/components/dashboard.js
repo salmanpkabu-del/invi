@@ -55,8 +55,8 @@ export function renderDashboardView(container, onNavigateToAdmin, onNavigateToIn
               🔥 Sync Cloud RSVPs
             </button>
           ` : ''}
-          <button id="dash-btn-whatsapp-reminder" class="btn btn-secondary" style="border-color: #10B981; color: #10B981;">
-            💬 WhatsApp Blast
+          <button id="dash-btn-bulk-delivery" class="btn btn-secondary" style="border-color: #10B981; color: #10B981;">
+            🚀 Deliver Personalized Links
           </button>
           <button id="dash-btn-scan-pass" class="btn btn-secondary">
             🎟️ Gatekeeper Check-in
@@ -293,13 +293,60 @@ export function renderDashboardView(container, onNavigateToAdmin, onNavigateToIn
     csvBtn.addEventListener('click', () => exportGuestListToCSV(activeEvent));
   }
 
-  // WhatsApp Broadcast Simulator
-  const waBtn = container.querySelector('#dash-btn-whatsapp-reminder');
-  if (waBtn) {
-    waBtn.addEventListener('click', () => {
-      const text = `*Reminder for ${activeEvent.title}*\nDear Guest, please confirm your attendance at your earliest convenience: ${window.location.origin}/#invite-${activeEvent.id}`;
-      const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
-      window.open(waUrl, '_blank');
+  // Bulk WhatsApp Delivery Modal
+  const bulkBtn = container.querySelector('#dash-btn-bulk-delivery');
+  if (bulkBtn) {
+    bulkBtn.addEventListener('click', () => {
+      let modal = document.getElementById('celebrati-bulk-wa-modal');
+      if (modal) modal.remove();
+
+      modal = document.createElement('div');
+      modal.id = 'celebrati-bulk-wa-modal';
+      modal.style.cssText = `
+        position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px);
+        z-index: 999999; display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      `;
+
+      const guestListHtml = (activeEvent.rsvps || []).map(r => {
+        const inviteLink = `${window.location.origin}/#invite-${activeEvent.id}?guest=${encodeURIComponent(r.guestName)}`;
+        const msg = encodeURIComponent(`✨ Hello ${r.guestName}! Here is your personalized VIP invitation link to ${activeEvent.title}:\n\n${inviteLink}\n\nPlease confirm your attendance!`);
+        return `
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:0.75rem; border-bottom:1px solid rgba(255,255,255,0.05);">
+            <div>
+              <div style="font-weight:600; color:#fff;">${r.guestName}</div>
+              <div style="font-size:0.75rem; color:#94A3B8;">Status: ${r.status.toUpperCase()}</div>
+            </div>
+            <a href="https://api.whatsapp.com/send?text=${msg}" target="_blank" class="btn btn-sm" style="background:#25D366; color:#fff; border:none; border-radius:6px;">
+              💬 Send Link
+            </a>
+          </div>
+        `;
+      }).join('') || '<div style="padding:1rem; text-align:center; color:#94A3B8;">No guests in RSVP list yet.</div>';
+
+      modal.innerHTML = `
+        <div style="width:100%; max-width:500px; background:#1E293B; border:1px solid rgba(255,255,255,0.1); border-radius:16px; box-shadow:0 25px 50px rgba(0,0,0,0.5); overflow:hidden; display:flex; flex-direction:column; max-height:80vh;">
+          <div style="padding:1.25rem 1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
+            <h3 style="margin:0; font-family:var(--font-display); font-size:1.25rem; color:#fff;">🚀 Bulk Delivery</h3>
+            <button id="close-bulk-modal" style="background:none; border:none; color:#94A3B8; font-size:1.25rem; cursor:pointer;">✕</button>
+          </div>
+          <div style="padding:1rem 1.5rem; background:rgba(0,0,0,0.2); font-size:0.85rem; color:#94A3B8;">
+            Select a guest below to open WhatsApp and send them their personalized invitation link.
+          </div>
+          <div style="overflow-y:auto; padding:0.5rem 1rem;">
+            ${guestListHtml}
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      document.getElementById('close-bulk-modal').addEventListener('click', () => modal.remove());
+    });
+  }
+
+  // CSV Export Listener
+  const exportCsvBtn = container.querySelector('#dash-btn-export-csv');
+  if (exportCsvBtn) {
+    exportCsvBtn.addEventListener('click', () => {
+      exportGuestListToCSV(activeEvent);
     });
   }
 
