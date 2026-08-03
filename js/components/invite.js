@@ -459,6 +459,14 @@ export function renderInviteView(container) {
     if (openerOverlay.parentElement !== document.body) {
       document.body.appendChild(openerOverlay);
     }
+
+    // Apply light mode class BEFORE engine renders (so CSS is active from frame 1)
+    if (themeObj?.lightEnvelope === true) {
+      openerOverlay.classList.add('env-light-mode');
+    } else {
+      openerOverlay.classList.remove('env-light-mode');
+    }
+
     const eventTitle = activeEvent.title || 'An Exclusive Event';
     const eventHosts = activeEvent.hostNames || '';
     envelopeEngine = new PremiumEnvelopeEngine(openerOverlay, eventTitle, eventHosts, themeObj);
