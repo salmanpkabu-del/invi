@@ -797,6 +797,108 @@
   100% { opacity: 1; transform: scale(1.08); }
 }
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PREMIUM LIGHT MODE ENVELOPE — Ivory & Champagne Gold Stationery
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+#envelope-opener-overlay.env-light-mode {
+  background: radial-gradient(
+    ellipse 90% 80% at 50% 45%,
+    #FFFBF4 0%,
+    #FDF3DF 30%,
+    #F7E5C0 65%,
+    #EDD5A0 100%
+  );
+}
+
+/* Light mode — warm golden bokeh glows on ivory background */
+#envelope-opener-overlay.env-light-mode::before {
+  background:
+    radial-gradient(circle 320px at 15% 80%, rgba(210, 155, 40, 0.18) 0%, transparent 65%),
+    radial-gradient(circle 260px at 85% 20%, rgba(245, 195, 80, 0.14) 0%, transparent 65%),
+    radial-gradient(circle 200px at 50% 0%,  rgba(255, 220, 100, 0.12) 0%, transparent 65%),
+    radial-gradient(circle 180px at 0%  50%, rgba(190, 135, 30, 0.10) 0%, transparent 65%),
+    radial-gradient(circle 150px at 100% 60%,rgba(230, 180, 60, 0.08) 0%, transparent 65%);
+  animation: ambientShiftLight 8s ease-in-out infinite alternate;
+}
+
+@keyframes ambientShiftLight {
+  0%   { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 1;   transform: scale(1.06); }
+}
+
+/* Luxury subtle grain texture on light envelope overlay */
+#envelope-opener-overlay.env-light-mode::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: multiply;
+}
+
+/* Light mode — text colors: deep warm charcoal instead of ivory/gold */
+#envelope-opener-overlay.env-light-mode .env-title-eyebrow {
+  color: rgba(110, 72, 18, 0.85);
+  letter-spacing: 5px;
+}
+
+#envelope-opener-overlay.env-light-mode .env-title-main {
+  color: #2D1505 !important;
+  text-shadow:
+    0 0 30px rgba(180, 120, 20, 0.2),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Prompt dots & text — rich warm brown */
+#envelope-opener-overlay.env-light-mode .env-prompt-text {
+  color: rgba(90, 58, 12, 0.72);
+}
+
+#envelope-opener-overlay.env-light-mode .env-prompt-dot {
+  background: #B8860B !important;
+  box-shadow: 0 0 6px rgba(184, 134, 11, 0.5);
+}
+
+/* Inner card rising from envelope — ivory card with gold trim */
+#envelope-opener-overlay.env-light-mode .env-inner-card {
+  background: linear-gradient(150deg, #FFFBF0 0%, #FDF1D8 100%);
+  color: #2D1505;
+  border-color: #C9A227;
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 39, 0.25),
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+#envelope-opener-overlay.env-light-mode .env-inner-card::before {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
+}
+
+#envelope-opener-overlay.env-light-mode .env-card-monogram {
+  color: #8B6914;
+  text-shadow: 0 0 10px rgba(184, 134, 11, 0.3);
+}
+
+#envelope-opener-overlay.env-light-mode .env-card-title {
+  color: #1F0E04;
+}
+
+#envelope-opener-overlay.env-light-mode .env-card-hosts {
+  color: #7A5210;
+}
+
+/* Glow flash on light mode — warm cream burst */
+#envelope-opener-overlay.env-light-mode ~ .env-glow-flash,
+.env-light-mode .env-glow-flash {
+  background: radial-gradient(circle at 50% 50%, #FFFFFF 0%, #FFFCF0 40%, #FFF5D6 75%, rgba(255, 242, 200, 0.96) 100%);
+  box-shadow: inset 0 0 120px rgba(255, 210, 80, 0.4);
+}
+
+
 /* Floating dust particles overlay canvas */
 #envelope-opener-overlay .env-dust-canvas {
   position: absolute;

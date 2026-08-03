@@ -171,6 +171,20 @@ export const THEMES = {
     particleType: 'gold-dust',
     layoutType: 'editorial',
     openingType: 'editorial-reveal'
+  },
+  'theme-pearl-ivory': {
+    id: 'theme-pearl-ivory',
+    name: '🪷 Pearl Ivory',
+    category: 'general-premium',
+    categoryLabel: 'General Premium',
+    description: 'Ivory, Champagne Gold & Warm Charcoal — Light Luxury Stationery for Refined Celebrations',
+    primaryColor: '#B8860B',
+    bgPreview: '#F5E6C0',
+    swatches: ['#FBF5E9', '#B8860B', '#1F0E04', '#F0D88A'],
+    particleType: 'gold-dust',
+    layoutType: 'classic',
+    openingType: 'envelope',
+    lightEnvelope: true
   }
 };
 
@@ -186,6 +200,13 @@ export function applyTheme(elementOrSelector, themeId) {
 
   const validTheme = THEMES[themeId] ? themeId : 'theme-royal';
   target.classList.add(validTheme);
+
+  // Toggle light envelope mode on the overlay if this theme requires it
+  const overlay = document.getElementById('envelope-opener-overlay');
+  if (overlay) {
+    const isLight = THEMES[validTheme]?.lightEnvelope === true;
+    overlay.classList.toggle('env-light-mode', isLight);
+  }
   
   return THEMES[validTheme];
 }
